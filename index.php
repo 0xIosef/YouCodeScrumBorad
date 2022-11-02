@@ -113,9 +113,9 @@
 				
 				<div class="navbar-item navbar-user dropdown">
 					<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-						<img src="assets/img/user/user-13.jpg" alt="" /> 
+						<img src="assets/img/user/me.jpeg" alt="" /> 
 						<span>
-							<span class="d-none d-md-inline">Jilali Smith</span>
+							<span class="d-none d-md-inline">yhammani</span>
 							<b class="caret"></b>
 						</span>
 					</a>
@@ -146,12 +146,12 @@
 						<a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
 							<div class="menu-profile-cover with-shadow"></div>
 							<div class="menu-profile-image">
-								<img src="assets/img/user/user-13.jpg" alt="" />
+								<img src="assets/img/user/me.jpeg" alt="" />
 							</div>
 							<div class="menu-profile-info">
 								<div class="d-flex align-items-center">
 									<div class="flex-grow-1">
-										Jilali Smith
+										Youssef Hammani
 									</div>
 									<div class="menu-caret ms-auto"></div>
 								</div>

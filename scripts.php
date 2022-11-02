@@ -75,11 +75,11 @@
         global $link;
 
         // CODE HERE
-        $title       = test_input($_POST['task-title']);
-        $type        = test_input($_POST['task-type']);
-        $priority    = test_input($_POST['task-priority']);;
-        $status      = test_input($_POST['task-status']);
+        $type        = $_POST['task-type'];
+        $status      = $_POST['task-status'];
+        $priority    = $_POST['task-priority'];
         $date        = test_input($_POST['task-date']);
+        $title       = test_input($_POST['task-title']);
         $description = test_input($_POST['task-description']);
 
         //SQL INSERT
@@ -100,11 +100,11 @@
 
         //CODE HERE
         $id          = $_POST['task-id'];
-        $title       = test_input($_POST['task-title']);
-        $type        = test_input($_POST['task-type']);
-        $priority    = test_input($_POST['task-priority']);
-        $status      = test_input($_POST['task-status']);
+        $type        = $_POST['task-type'];
+        $status      = $_POST['task-status'];
+        $priority    = $_POST['task-priority'];
         $date        = test_input($_POST['task-date']);
+        $title       = test_input($_POST['task-title']);
         $description = test_input($_POST['task-description']);
 
         //SQL UPDATE
