@@ -25,48 +25,50 @@
     {
         global $link;
         
-        //CODE HERE
-        $query  = "SELECT priorities.name AS prior, types.name AS type, tasks.*
-                    FROM `tasks`
-                    INNER JOIN priorities ON tasks.priority_id = priorities.id
-                    INNER JOIN types ON tasks.type_id = types.id";
-        $result = mysqli_query($link, $query);
-
-        // PROTECTION
-        if (!isset($result))
-            echo "ERROR: Could not able to execute $query. " . mysqli_error($link);
-        while ($rows = mysqli_fetch_assoc($result))
-        {
-            $id   = $rows['id'];
-            $icon = checkIcon($status);
-
-            if ($rows['status_id'] == $status)
-            {
-                echo '
-                    <div class="d-flex bg-white border-bottom mt-2 p-4">
-                        <button href="#modal-task" data-bs-toggle="modal"class="d-flex w-100 bg-white border-0" onclick="editTask('.$id.')">
-                            <div class="text-green fs-5 ps-3 py-2">
-                                <i class="'.$icon.'"></i>
-                            </div>
-                            <div class="text-start ps-4" id="status'.$id.'" data="'.$rows['status_id'].'">
-                                <div class="fs-5" id="title'.$id.'" data="'.$rows['title'].'">'.$rows['title'].'</div>
-                                <div class="py-2">
-                                    <div class="fw-lighter py-2" id="datetime'.$id.'" data="'.$rows['task_datetime'].'">#'.$id.' created in '.$rows['task_datetime'].'</div>
-                                    <div class="fw-light" id="description'.$id.'" data="'.$rows['description'].'">'.$rows['description'].'</div>
-                                </div>
-                                <div class="mt-2">
-                                    <span class="bg-blue text-white rounded-3 px-2 py-1" id="priority'.$id.'" data="'.$rows['priority_id'].'">'.$rows['prior'].'</span>
-                                    <span class="bg-gray-400 rounded-3 px-2 py-1" id="type'.$id.'" data="'.$rows['type_id'].'">'.$rows['type'].'</span>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                ';
-            }
-        }
-
         //SQL SELECT
-        echo "Fetch all tasks";
+        $query  = "SELECT priorities.name AS prior, types.name AS type, tasks.*
+            FROM `tasks`
+            INNER JOIN priorities ON tasks.priority_id = priorities.id
+            INNER JOIN types ON tasks.type_id = types.id";
+
+        // CODE HERE
+        if($result = mysqli_query($link, $query))
+        {
+            while ($rows = mysqli_fetch_assoc($result))
+            {
+                $i++;
+                $id   = $rows['id'];
+                $icon = checkIcon($status);
+                
+                if ($rows['status_id'] == $status)
+                {
+                    echo '
+                        <div class="d-flex bg-white border-bottom mt-2 p-4">
+                            <button href="#modal-task" data-bs-toggle="modal"class="d-flex w-100 bg-white border-0" onclick="editTask('.$id.')">
+                                <div class="text-green fs-5 ps-3 py-2">
+                                    <i class="'.$icon.'"></i>
+                                </div>
+                                <div class="text-start ps-4" id="status'.$id.'" data="'.$rows['status_id'].'">
+                                    <div class="fs-5" id="title'.$id.'" data="'.$rows['title'].'">'.$rows['title'].'</div>
+                                    <div class="py-2">
+                                        <div class="fw-lighter py-2" id="datetime'.$id.'" data="'.$rows['task_datetime'].'">#'.$i.' created in '.$rows['task_datetime'].'</div>
+                                        <div class="fw-light" id="description'.$id.'" data="'.$rows['description'].'">'.$rows['description'].'</div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="bg-blue text-white rounded-3 px-2 py-1" id="priority'.$id.'" data="'.$rows['priority_id'].'">'.$rows['prior'].'</span>
+                                        <span class="bg-gray-400 rounded-3 px-2 py-1" id="type'.$id.'" data="'.$rows['type_id'].'">'.$rows['type'].'</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    ';
+                }
+            }
+            echo "Fetch all tasks";
+        }
+        else {
+            echo "ERROR: Could not able to execute $query. " . mysqli_error($link);
+        }
     }
 
 
